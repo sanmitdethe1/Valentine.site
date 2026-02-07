@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patient Case - Dr Sanmit</title>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+body{
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#fbc2eb,#fda085);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.card{
+    background:rgba(255,255,255,0.92);
+    padding:30px;
+    width:90%;
+    max-width:430px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    animation:fadeIn .6s ease;
+}
+
+h1{margin:0 0 10px 0;color:#333;}
+.tag{
+    display:inline-block;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    background:#ffd6e0;
+    color:#b30059;
+    margin-bottom:15px;
+}
+
+p{color:#444;line-height:1.6;}
+ul{color:#444;padding-left:18px;}
+
+button{
+    width:100%;
+    margin-top:18px;
+    padding:12px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(90deg,#ff758c,#ff7eb3);
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    transition:.3s;
+}
+button:hover{transform:scale(1.05);}
+
+.hidden{display:none;}
+
+.btn-group{
+    display:flex;
+    gap:10px;
+}
+.reject{
+    background:#e0e0e0;
+    color:#333;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="card" id="page1">
+<h1>Patient Case File</h1>
+<div class="tag">Confidential</div>
+<p><strong>Patient:</strong> Sonali 💖</p>
+<p><strong>Attending Physician:</strong> Dr. Sanmit 👨‍⚕️</p>
+<button onclick="next(1)">Open Case</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="card hidden" id="page2">
+<h1>Chief Complaint</h1>
+<div class="tag">Ongoing</div>
+<p>Persistent warmth in the chest when thinking about one extremely intelligent, kind and handsome doctor — Dr. Sanmit.</p>
+<button onclick="next(2)">Review Symptoms</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="card hidden" id="page3">
+<h1>Symptoms</h1>
+<div class="tag">Well Documented</div>
+<ul>
+<li>Smiling for no reason</li>
+<li>Feeling calm hearing his voice</li>
+<li>Wanting to share every moment</li>
+<li>Complete certainty he's her favourite person</li>
+</ul>
+<button onclick="next(3)">Assessment</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="card hidden" id="page4">
+<h1>Assessment</h1>
+<div class="tag">Stable</div>
+<p>Condition appears chronic and irreversible.</p>
+<p>Patient reports feeling safe, supported and genuinely happy with Dr. Sanmit.</p>
+<button onclick="next(4)">Final Recommendation</button>
+</div>
+
+<!-- PAGE 5 -->
+<div class="card hidden" id="page5">
+<h1>Final Recommendation</h1>
+<div class="tag">High Priority</div>
+<p>Proceed with Valentine's Day together.</p>
+<p>Laugh a lot. Eat something good.</p>
+<p><strong>Will you be Dr. Sanmit's Valentine?</strong></p>
+
+<div class="btn-group">
+<button onclick="accept()">Accept 💌</button>
+<button class="reject" onclick="reject()">Reject ❌</button>
+</div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="card hidden" id="page6">
+<h1>Case Closed</h1>
+<div class="tag">Approved</div>
+<p>Recommendation accepted.</p>
+<p><strong>Prognosis: Extremely Good ❤️</strong></p>
+<button onclick="next(6)">View Treatment Plan</button>
+</div>
+
+<!-- PAGE 7 -->
+<div class="card hidden" id="page7">
+<h1>Treatment Plan</h1>
+<div class="tag">Valentine's Day</div>
+<p><strong>Date:</strong> February 9</p>
+<p><strong>Time:</strong> 7:00 PM</p>
+<p><strong>Location:</strong> FaceTime 📱</p>
+<p>Side effects may include battery drainage, endless smiling and counting days until reunion.</p>
+<p>I can't wait to see your face 💖</p>
+</div>
+
+<script>
+function next(num){
+    document.getElementById("page"+num).classList.add("hidden");
+    document.getElementById("page"+(num+1)).classList.remove("hidden");
+}
+
+function accept(){
+    next(5);
+    confetti({
+        particleCount:150,
+        spread:70,
+        origin:{y:0.6}
+    });
+}
+
+function reject(){
+    alert("Error ❌ Rejection not allowed 😌❤️");
+}
+</script>
+
+</body>
+</html>
